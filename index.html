@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: orange;
+        }
+        pre{
+            color: green;
+        }
+        li{
+          color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p>1.Difference between “ == “ and “ === “ operators.</p>
+    <li>both are the comparsion operators and gives boolean values always</li>
+    <li>only difference is "==" only compares the values whereavers "==="is compare the values and check the data type</li>
+    <pre>
+        var x="2"
+        var y=2;
+         console.log(x==y)
+         console.log(x===y)
+    </pre>
+    <p>2.what is spread operator</p>
+    <li>
+        1.SPREAD OPERATOR ALLOWS TO DESTRUCTURE THE NON PRIMITATIVE DATA TYPES</li>
+        <li>2.  copy of the code (...)</li>
+    <pre>
+        let arr=[1,2,3,4]
+        let arr1=[5,6,7,8]
+        let arr2=[...arr,...arr1]
+        let [ret,ret1,...rest]=arr2
+        console.log(rest) 
+        console.log(arr2,"is spreading")
+    </pre>
+    <p>3.What are the differences between var, let and const?</p>
+    <li>variables which are declared using var key is global scoped,which are accessible globally.it can be redeclared and reintiliazed</li>
+    <li>let is an block scoped variable created using let will be accessible only in specified block .it cannot redeclared but reintiliazed</li>
+    <li>const is also an block scoped variable created using const will be accessible only in specified code .it cannt be redeclared and reintiliazed</li>
+    <p>4.What is execution context</p>
+    <li>each and every browser having js engine</li>
+    <li>js engine uses callstack  & also creates environment to handle special the excution of code.is known as excution context</li>
+    <li>there are two kinds of excutions global excution and function excution</li>
+    <li>the moment code get excuted the gec get created and gets pushed it to callstack.inside the global or function excution context,</li>
+    <li>there are two phases memory alllocation & code excution</li>
+    <li>in memory allocation the variables which are declared using the var key will be declares as undefined n global scope,wherevers the let & const keywords gets memory allocation as undefined in blockscope</li>
+    <li>memory is known as creation phase and code is an excution phase</li>
+    <p>5.What is an event loop and call stack</p>
+    <li>A CALLSTACK is mechanism for an intrepreter to keep track of its place in ascript to call multiple functions-what function is currently running and what to be called within that function.</li>
+    <li>The Event loop is constantly running process that monitors both are callback queue and call stack.All the web apis functions like setTimeout ,settimeInterval ,fetch calls etc..will not be directly executed inside the execution context,Firstly,they will be moved to the callback queue and then the moment call stack gets empty these functions will be pushed to call stack from call back queue by event loop.If the call stack is not empty event loop waits until it is empty and places the next function from callback queue to the callstack.</li>
+    <p>6.What is meant by first class functions</p>
+    <li>functions which are asssigned to variables and fuctions which are pass as an argument </li>
+    <pre>
+        let myfun=function(){
+            console.log("hello first claa")
+        }
+        myfun()
+    </pre>
+    <p>7.What is creation phase and execution phase?</p>
+    <li>compiler runs through the entire code for 2times before actuaal excution of code </li>
+    <li>1.creation phase</li>
+    <li>first run it picks all the functions declartions and store them in memory with their refrence</li>
+    <li>in second run it picks all the variables and aasign them undefined to them,inn the event confilt between variable and function declartion name then that variable is ignored</li>
+    <li>2.excution code</li>
+    <li>where the actual code will get and we will gwt the output </li>
+   <p> 8Q. What are closures? Give an example of closure </p><br>
+   <li> 1.A closure is the combination of a bundle enclosed with reference to state. </li>
+   <li> 2.closure gives acess to an outer function scoopes from an inside function</li>
+   <li>  3.When a function is declared inside another function then the child function can inherit the values from it's lexial parent function, this is known as closures in JS. Closures are created every time a function is created, at function creation time.</li>
+    
+<pre>
+    function out(){
+        let abc="pavan";
+        function ins(){
+            console.log(abc)
+        }
+        ins();
+    }
+    out();
+</pre>
+    <p>9.Explain call(), apply() and, bind() methods. Give an example of call(), apply(), bind()
+    </p>   <br>
+    <b>call() this method invokes afunction in which first argument will be object and rest of the arguments required by functon will be provided as individual arguments </b>
+    <pre>
+        var emp1={
+            name:"pavan",
+            age:21
+        }
+        function invite(greeting1){
+            console.log(greeting1+" "+this.name+" "+this.age)
+        }
+        invite.call(emp1,"hi")
+    </pre>
+    <b>apply() in this method first argument will be object and rest of the arguments will be in array of elements</b>
+    <pre>
+        var emp1={
+            name:"nithin",
+            age:21
+        }
+        function invite(greeting1){
+            console.log(greeting1+" "+this.name+" "+this.age)
+        }
+        invite.apply(emp1,["hey dude apply"])
+        
+    </pre>
+    <b>bind() this method return new function and this function will be having reference of the object passed</b>
+    <pre>
+        var emp1={
+            name:"nithin",
+            age:21
+        }
+        function invite(greeting1){
+            console.log(greeting1+" "+this.name+" "+this.age)
+        }
+        let emp2=invite.bind(emp1)
+        emp2("hello bind")
+        
+    </pre>
+    <script src="./main.js"></script>
+</body>
+</html>
